@@ -63,3 +63,18 @@
 
 КОММИТ:
    fix(env): correct PostgreSQL port from 5433 to 5432
+
+   Инцидент №5: Неверный пароль пользователя PostgreSQL
+──────────────────────────────────
+СИМПТОМ:
+   При запуске uvicorn после исправления порта возникает ошибка:
+   psycopg2.OperationalError: FATAL: password authentication failed for user "postgres"
+
+ПРИЧИНА:
+   В файле .env указан неверный пароль для пользователя postgres.
+
+РЕШЕНИЕ:
+   В .env заменён пароль на правильный (подтверждён через успешное подключение psql).
+
+КОММИТ:
+   fix(env): correct PostgreSQL password in .env
