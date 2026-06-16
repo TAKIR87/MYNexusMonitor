@@ -48,3 +48,18 @@
 
 КОММИТ:
    fix(deps): add pydantic-settings for configuration management
+
+   Инцидент №4: Неверный порт PostgreSQL
+──────────────────────────────────
+СИМПТОМ:
+   При запуске uvicorn возникает ошибка:
+   psycopg2.OperationalError: connection to server at "localhost" (::1), port 5433 failed: Connection refused
+
+ПРИЧИНА:
+   В файле .env в строке DATABASE_URL указан порт 5433, тогда как реально PostgreSQL работает на порту 5432 (подтверждено командой netstat).
+
+РЕШЕНИЕ:
+   В файле .env порт исправлен с 5433 на 5432.
+
+КОММИТ:
+   fix(env): correct PostgreSQL port from 5433 to 5432
