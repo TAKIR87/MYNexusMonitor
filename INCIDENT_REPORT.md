@@ -16,3 +16,19 @@
 
 КОММИТ:
    fix(env): add .gitignore
+
+   Инцидент №2: Несовместимость SQLAlchemy с Python 3.13
+──────────────────────────────────
+СИМПТОМ:
+   При запуске uvicorn возникает ошибка AssertionError в sqlalchemy.sql.elements
+   с сообщением о TypingOnly и атрибутах __firstlineno__, __static_attributes__.
+
+ПРИЧИНА:
+   SQLAlchemy 2.0.25 не поддерживает Python 3.13 из-за изменений в модуле typing.
+
+РЕШЕНИЕ:
+   Версия SQLAlchemy обновлена до 2.0.36 (или выше) в requirements.txt.
+   Выполнена команда: pip install --upgrade sqlalchemy.
+
+КОММИТ:
+   fix(deps): update sqlalchemy to >=2.0.36 for Python 3.13 compatibility
