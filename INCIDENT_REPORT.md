@@ -32,3 +32,19 @@
 
 КОММИТ:
    fix(deps): update sqlalchemy to >=2.0.36 for Python 3.13 compatibility
+
+   Инцидент №3: Отсутствует зависимость pydantic-settings
+──────────────────────────────────
+СИМПТОМ:
+   При запуске uvicorn возникает ошибка ModuleNotFoundError: No module named 'pydantic_settings'.
+   Ошибка возникает в файле core/config.py при попытке импорта из pydantic_settings.
+
+ПРИЧИНА:
+   В проекте используется pydantic_settings для управления конфигурацией, но этот пакет отсутствует в requirements.txt и не был установлен.
+
+РЕШЕНИЕ:
+   В requirements.txt добавлена строка: pydantic-settings>=2.0.0
+   Выполнена команда: pip install -r requirements.txt
+
+КОММИТ:
+   fix(deps): add pydantic-settings for configuration management
